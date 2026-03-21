@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChaiTailwind — Utility CSS, Brewed in JavaScript</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --chai-brown: #b85c1a;
+    --chai-gold: #d4820a;
+    --chai-amber: #f5a623;
+    --chai-dark: #1a1410;
+    --chai-ink: #2d2520;
+    --chai-bg: #fdfaf6;
+    --chai-surface: #fff8f0;
+    --chai-border: #e8ddd0;
+    --chai-border-strong: #d4c4b0;
+    --chai-text: #2d2520;
+    --chai-muted: #7a6e65;
+    --chai-faint: #f0e8de;
+    --font-display: 'Syne', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--chai-bg);
+    color: var(--chai-text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 64px;
+    background: rgba(253, 250, 246, 0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--chai-border);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--chai-dark);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--font-mono);
+    font-size: 0.73rem;
+    color: var(--chai-muted);
+    text-decoration: none;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--chai-brown); }
+
+  .nav-cta {
+    font-family: var(--font-mono);
+    font-size: 0.73rem;
+    color: #fff;
+    background: var(--chai-brown);
+    padding: 9px 20px;
+    border-radius: 7px;
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .nav-cta:hover { background: var(--chai-dark); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    padding: 140px 64px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 72px;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .hero-left { animation: fadeUp 0.7s ease both; }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--chai-brown);
+    background: #fef3e2;
+    border: 1px solid #f5d9a8;
+    padding: 5px 13px;
+    border-radius: 100px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--chai-amber);
+    border-radius: 50%;
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 4.5vw, 4.4rem);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    color: var(--chai-dark);
+    margin-bottom: 22px;
+  }
+
+  .hero h1 .accent { color: var(--chai-brown); }
+
+  .hero h1 .strike {
+    position: relative;
+    color: var(--chai-muted);
+  }
+
+  .hero h1 .strike::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    top: 54%;
+    height: 3px;
+    background: var(--chai-brown);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: strikeThrough 0.5s 0.9s ease forwards;
+  }
+
+  @keyframes strikeThrough { to { transform: scaleX(1); } }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--chai-muted);
+    max-width: 400px;
+    line-height: 1.75;
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+
+  .hero-desc strong { color: var(--chai-text); font-weight: 500; }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: #fff;
+    background: var(--chai-brown);
+    padding: 13px 26px;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    transition: all 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--chai-dark); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(184,92,26,0.25); }
+
+  .btn-secondary {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--chai-muted);
+    background: transparent;
+    padding: 13px 26px;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--chai-border-strong);
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover { border-color: var(--chai-brown); color: var(--chai-brown); }
+
+  /* VIDEO */
+  .hero-right { animation: fadeUp 0.7s 0.15s ease both; }
+
+  .video-wrapper {
+    background: var(--chai-surface);
+    border: 1px solid var(--chai-border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 40px rgba(45,37,32,0.08), 0 1px 4px rgba(45,37,32,0.06);
+    aspect-ratio: 16/10;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .video-topbar {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 11px 16px;
+    background: #f2ebe3;
+    border-bottom: 1px solid var(--chai-border);
+    flex-shrink: 0;
+  }
+
+  .dot { width: 11px; height: 11px; border-radius: 50%; }
+  .dot-r { background: #ef4444; }
+  .dot-y { background: #f59e0b; }
+  .dot-g { background: #22c55e; }
+
+  .video-topbar .url-bar {
+    flex: 1;
+    background: #e8e0d8;
+    border-radius: 5px;
+    height: 20px;
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-family: var(--font-mono);
+    font-size: 0.63rem;
+    color: var(--chai-muted);
+  }
+
+  .video-canvas {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: var(--chai-faint);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .video-canvas::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(0deg, rgba(184,92,26,0.04) 0px, rgba(184,92,26,0.04) 1px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(90deg, rgba(184,92,26,0.04) 0px, rgba(184,92,26,0.04) 1px, transparent 1px, transparent 40px);
+  }
+
+  .play-btn {
+    width: 64px; height: 64px;
+    background: var(--chai-brown);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 24px rgba(184,92,26,0.28);
+    border: none;
+  }
+
+  .play-btn:hover { transform: scale(1.08); box-shadow: 0 8px 32px rgba(184,92,26,0.38); }
+
+  .video-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--chai-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--chai-border);
+  }
+
+  /* SECTIONS */
+  .section-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 96px 64px;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--chai-brown);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 800;
+    color: var(--chai-dark);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .section-title .hi { color: var(--chai-brown); }
+
+  /* FEATURES */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    margin-top: 52px;
+    background: var(--chai-border);
+    border: 1px solid var(--chai-border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .feature-card {
+    background: var(--chai-bg);
+    padding: 36px 28px;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .feature-card:hover { background: var(--chai-surface); }
+
+  .feature-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--chai-brown);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .feature-card:hover::after { opacity: 1; }
+
+  .feature-icon { font-size: 1.6rem; display: block; margin-bottom: 16px; }
+
+  .feature-card h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--chai-dark);
+    margin-bottom: 8px;
+  }
+
+  .feature-card p { font-size: 0.86rem; color: var(--chai-muted); line-height: 1.65; }
+
+  /* HOW IT WORKS */
+  .how-bg {
+    background: var(--chai-surface);
+    border-top: 1px solid var(--chai-border);
+    border-bottom: 1px solid var(--chai-border);
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 52px;
+    position: relative;
+  }
+
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 13%; right: 13%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--chai-border-strong), var(--chai-border-strong), transparent);
+  }
+
+  .step { text-align: center; }
+
+  .step-num {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: var(--chai-bg);
+    border: 1px solid var(--chai-border-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 22px;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--chai-brown);
+    position: relative;
+    z-index: 1;
+  }
+
+  .step h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--chai-dark); margin-bottom: 10px; }
+  .step p { font-size: 0.85rem; color: var(--chai-muted); line-height: 1.65; max-width: 220px; margin: 0 auto; }
+  .step code { font-family: var(--font-mono); font-size: 0.8em; color: var(--chai-brown); background: #fef3e2; padding: 1px 5px; border-radius: 3px; }
+
+  .install-block {
+    background: var(--chai-ink);
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 40px;
+    max-width: 700px;
+  }
+
+  .install-block code { font-family: var(--font-mono); font-size: 0.78rem; color: #f5a623; flex: 1; word-break: break-all; }
+
+  .copy-btn {
+    background: rgba(245,166,35,0.15);
+    border: 1px solid rgba(245,166,35,0.3);
+    color: #f5a623;
+    padding: 7px 13px;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .copy-btn:hover { background: rgba(245,166,35,0.25); }
+
+  /* CLASSES */
+  .classes-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 56px;
+    align-items: start;
+    margin-top: 52px;
+  }
+
+  .class-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--chai-border);
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 0.85rem;
+  }
+
+  .class-table thead { background: var(--chai-faint); }
+
+  .class-table th {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--chai-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: left;
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--chai-border);
+  }
+
+  .class-table tr { border-bottom: 1px solid var(--chai-border); transition: background 0.15s; }
+  .class-table tr:last-child { border-bottom: none; }
+  .class-table tr:hover { background: var(--chai-faint); }
+  .class-table td { padding: 10px 16px; }
+  .class-table td:first-child { font-family: var(--font-mono); color: var(--chai-brown); font-size: 0.8rem; }
+  .class-table td:last-child { color: var(--chai-muted); }
+
+  /* SIDEBAR */
+  .class-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: sticky;
+    top: 90px;
+  }
+
+  .sidebar-card {
+    background: var(--chai-surface);
+    border: 1px solid var(--chai-border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .sidebar-card-head {
+    padding: 12px 18px;
+    background: var(--chai-faint);
+    border-bottom: 1px solid var(--chai-border);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--chai-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .sidebar-card-body { padding: 20px 18px; display: flex; flex-direction: column; gap: 10px; }
+
+  .color-swatches { display: flex; gap: 8px; }
+
+  .swatch {
+    flex: 1; height: 32px; border-radius: 6px;
+    display: flex; align-items: flex-end; padding: 0 6px 4px;
+  }
+
+  .swatch span { font-family: var(--font-mono); font-size: 0.58rem; color: rgba(255,255,255,0.8); line-height: 1; }
+
+  .spacing-demo { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+
+  .spacing-box {
+    background: rgba(184,92,26,0.1);
+    border: 1px solid rgba(184,92,26,0.22);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--chai-brown);
+  }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid var(--chai-border);
+    padding: 44px 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--chai-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .footer-note { font-family: var(--font-mono); font-size: 0.68rem; color: var(--chai-muted); letter-spacing: 0.05em; }
+
+  .footer-links { display: flex; gap: 24px; list-style: none; }
+
+  .footer-links a {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--chai-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    letter-spacing: 0.06em;
+  }
+
+  .footer-links a:hover { color: var(--chai-brown); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+
+  .reveal.visible { opacity: 1; transform: none; }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--chai-bg); }
+  ::-webkit-scrollbar-thumb { background: var(--chai-border-strong); border-radius: 3px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 48px; min-height: auto; }
+    .section-wrap { padding: 72px 24px; }
+    .features-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .steps::before { display: none; }
+    .classes-layout { grid-template-columns: 1fr; }
+    .class-sidebar { position: static; }
+    .footer { flex-direction: column; gap: 20px; padding: 40px 24px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">☕ ChaiTailwind</div>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#classes">Classes</a></li>
+  </ul>
+  <a href="#install" class="nav-cta">GET STARTED →</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="badge">v1.0 · Now on CDN</div>
+    <h1>
+      <span class="strike">Write CSS.</span><br>
+      <span class="accent">Brew Styles.</span>
+    </h1>
+    <p class="hero-desc">
+      <strong>ChaiTailwind</strong> is a lightweight utility-first CSS engine that runs entirely in JavaScript.
+      No build step. No config. No CSS files. One script tag and you're done.
+    </p>
+    <div class="hero-actions">
+      <a href="#install" class="btn-primary">Start Brewing</a>
+      <a href="#classes" class="btn-secondary">View Classes</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="video-wrapper">
+      <div class="video-topbar">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+        <div class="url-bar">chaitailwind.dev · demo</div>
+      </div>
+      <div class="video-canvas">
+        <!--
+          REPLACE THIS COMMENT BLOCK WITH YOUR VIDEO.
+
+          For a local video file:
+          <video src="your-demo.mp4" controls width="100%" height="100%" style="object-fit:cover"></video>
+
+          For a YouTube embed:
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+            frameborder="0" allowfullscreen style="display:block"></iframe>
+
+          For a Vimeo embed:
+          <iframe width="100%" height="100%" src="https://player.vimeo.com/video/YOUR_VIDEO_ID"
+            frameborder="0" allowfullscreen style="display:block"></iframe>
+        -->
+        <button class="play-btn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M6 4l15 8-15 8V4z" fill="#fff"/>
+          </svg>
+        </button>
+        <span class="video-label">Demo video · Coming soon</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- FEATURES -->
+<div id="features">
+  <div class="section-wrap">
+    <div class="section-label reveal">/ features</div>
+    <h2 class="section-title reveal">Everything you need. <span class="hi">Nothing you don't.</span></h2>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <span class="feature-icon">⚡</span>
+        <h3>Zero Build Step</h3>
+        <p>No PostCSS. No Webpack. No config files. Drop one script tag and ChaiTailwind initializes itself on load.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="feature-icon">🔭</span>
+        <h3>MutationObserver</h3>
+        <p>Dynamically added nodes are styled automatically. Works with SPAs, frameworks, and lazy-loaded content.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="feature-icon">🎨</span>
+        <h3>Built-in Color System</h3>
+        <p>An opinionated palette with <code style="font-family:var(--font-mono);font-size:0.8em;color:var(--chai-brown)">chai-bg-*</code> and <code style="font-family:var(--font-mono);font-size:0.8em;color:var(--chai-brown)">chai-text-*</code> utilities ready out of the box.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="feature-icon">📦</span>
+        <h3>Featherlight</h3>
+        <p>Pure JavaScript, zero dependencies. Optimized DOM selectors so it never scans the entire page.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="feature-icon">🏗️</span>
+        <h3>Layout Utilities</h3>
+        <p>Flex, justify-content, align-items — the layout primitives you reach for every day, now as class names.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="feature-icon">🔄</span>
+        <h3>Auto-initializes</h3>
+        <p>No function calls needed. ChaiTailwind listens for <code style="font-family:var(--font-mono);font-size:0.8em;color:var(--chai-brown)">DOMContentLoaded</code> and runs on its own.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<div class="how-bg" id="how">
+  <div class="section-wrap">
+    <div class="section-label reveal">/ how it works</div>
+    <h2 class="section-title reveal">Three sips to <span class="hi">production.</span></h2>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h3>Add the Script</h3>
+        <p>Drop the CDN script at the bottom of your HTML. That's your entire setup.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h3>Write Utility Classes</h3>
+        <p>Add <code>chai-*</code> classes to any element. Spacing, colors, typography, flex, borders — all included.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h3>Styles Applied</h3>
+        <p>The engine scans, parses, converts to inline styles, and cleans up the class names. Fully automatic.</p>
+      </div>
+    </div>
+    <div class="install-block reveal" id="install">
+      <code>&lt;script src="https://cdn.jsdelivr.net/gh/YOUR_USERNAME/chai-tailwind/index.js"&gt;&lt;/script&gt;</code>
+      <button class="copy-btn" onclick="copyScript(this)">COPY</button>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CLASSES -->
+<div id="classes">
+  <div class="section-wrap">
+    <div class="section-label reveal">/ utility classes</div>
+    <h2 class="section-title reveal">Every class, <span class="hi">at a glance.</span></h2>
+    <div class="classes-layout">
+      <table class="class-table reveal">
+        <thead>
+          <tr><th>Class</th><th>CSS Output</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>chai-p-{n}</td><td>padding: {n}px</td></tr>
+          <tr><td>chai-m-{n}</td><td>margin: {n}px</td></tr>
+          <tr><td>chai-bg-red</td><td>background-color: #ef4444</td></tr>
+          <tr><td>chai-bg-blue</td><td>background-color: #3b82f6</td></tr>
+          <tr><td>chai-bg-green</td><td>background-color: #22c55e</td></tr>
+          <tr><td>chai-bg-black</td><td>background-color: #0f172a</td></tr>
+          <tr><td>chai-bg-white</td><td>background-color: #f8fafc</td></tr>
+          <tr><td>chai-text-center</td><td>text-align: center</td></tr>
+          <tr><td>chai-text-left</td><td>text-align: left</td></tr>
+          <tr><td>chai-text-right</td><td>text-align: right</td></tr>
+          <tr><td>chai-text-{n}</td><td>font-size: {n}px</td></tr>
+          <tr><td>chai-text-white</td><td>color: #f8fafc</td></tr>
+          <tr><td>chai-text-red</td><td>color: #ef4444</td></tr>
+          <tr><td>chai-rounded-{n}</td><td>border-radius: {n}px</td></tr>
+          <tr><td>chai-border-{n}</td><td>border: {n}px solid …</td></tr>
+          <tr><td>chai-flex</td><td>display: flex</td></tr>
+          <tr><td>chai-justify-{v}</td><td>justify-content: {v}</td></tr>
+          <tr><td>chai-items-{v}</td><td>align-items: {v}</td></tr>
+          <tr><td>chai-w-{n}</td><td>width: {n}px</td></tr>
+          <tr><td>chai-h-{n}</td><td>height: {n}px</td></tr>
+        </tbody>
+      </table>
+
+      <div class="class-sidebar">
+        <div class="sidebar-card reveal">
+          <div class="sidebar-card-head">Color Palette</div>
+          <div class="sidebar-card-body">
+            <div class="color-swatches">
+              <div class="swatch" style="background:#ef4444"><span>red</span></div>
+              <div class="swatch" style="background:#3b82f6"><span>blue</span></div>
+              <div class="swatch" style="background:#22c55e"><span>green</span></div>
+              <div class="swatch" style="background:#0f172a"><span>black</span></div>
+              <div class="swatch" style="background:#c8bdb5"><span style="color:rgba(0,0,0,0.35)">white</span></div>
+            </div>
+            <p style="font-size:0.78rem;color:var(--chai-muted)">Use any name as a value for <code style="font-family:var(--font-mono);font-size:0.85em;color:var(--chai-brown)">chai-bg-*</code> and <code style="font-family:var(--font-mono);font-size:0.85em;color:var(--chai-brown)">chai-text-*</code>.</p>
+          </div>
+        </div>
+
+        <div class="sidebar-card reveal">
+          <div class="sidebar-card-head">Spacing Scale</div>
+          <div class="sidebar-card-body">
+            <div class="spacing-demo">
+              <div class="spacing-box" style="width:20px;height:20px;font-size:0.55rem">4</div>
+              <div class="spacing-box" style="width:28px;height:28px;font-size:0.58rem">8</div>
+              <div class="spacing-box" style="width:36px;height:36px;font-size:0.6rem">12</div>
+              <div class="spacing-box" style="width:46px;height:46px;font-size:0.62rem">16</div>
+              <div class="spacing-box" style="width:58px;height:58px;font-size:0.64rem">20</div>
+              <div class="spacing-box" style="width:72px;height:72px;font-size:0.66rem">24</div>
+            </div>
+            <p style="font-size:0.78rem;color:var(--chai-muted)">Any integer works — <code style="font-family:var(--font-mono);font-size:0.85em;color:var(--chai-brown)">chai-p-32</code>, <code style="font-family:var(--font-mono);font-size:0.85em;color:var(--chai-brown)">chai-m-8</code>, etc.</p>
+          </div>
+        </div>
+
+        <div class="sidebar-card reveal">
+          <div class="sidebar-card-head">Quick Example</div>
+          <div class="sidebar-card-body">
+            <div style="background:#1a1410;color:#f0e8de;border-radius:10px;padding:14px 18px;font-family:var(--font-mono);font-size:0.72rem;line-height:1.9">
+              <span style="color:#86efac">&lt;div</span>
+              <span style="color:#fde68a"> class</span>=<span style="color:#f5a623">"chai-p-20<br>&nbsp;&nbsp;&nbsp;chai-bg-black<br>&nbsp;&nbsp;&nbsp;chai-rounded-12<br>&nbsp;&nbsp;&nbsp;chai-text-white"</span>
+              <span style="color:#86efac">&gt;</span><br>
+              &nbsp;&nbsp;Hello, ChaiTailwind<br>
+              <span style="color:#86efac">&lt;/div&gt;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="border-top:1px solid var(--chai-border)">
+  <div class="footer">
+    <div class="footer-logo">☕ ChaiTailwind</div>
+    <p class="footer-note">UTILITY CSS · BREWED IN JS · MIT LICENSE</p>
+    <ul class="footer-links">
+      <li><a href="#">GitHub</a></li>
+      <li><a href="#">Docs</a></li>
+      <li><a href="#">CDN</a></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 70);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => io.observe(el));
+
+  function copyScript(btn) {
+    const code = btn.previousElementSibling.textContent;
+    navigator.clipboard.writeText(code).then(() => {
+      btn.textContent = 'COPIED ✓';
+      btn.style.color = '#22c55e';
+      btn.style.borderColor = '#22c55e';
+      setTimeout(() => {
+        btn.textContent = 'COPY';
+        btn.style.color = '';
+        btn.style.borderColor = '';
+      }, 2000);
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai Forge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <nav>
+        <div>☕ Chai Forge</div>
+        <div id="github-repo"><a target="_blank" href="https://github.com/TheAdroitDev/Chai-Forge">Github</a></div>
+    </nav>
+    <div class="hero">
+        <h1>Brew Styles, Not CSS</h1>
+        <p>
+            <strong>Chai Forge</strong> is a lightweight utility-first CSS engine that runs in JavaScript. No build
+            step. Just plug and play.
+        </p>
+        <div class="badge">v1.0 · Now on npm</div>
+        <p>
+            <strong>Copy CDN</strong> is Faster ⚡. No build
+            step. Just plug and play.
+        </p>
+        <div class="badge-cdn">https://cdn.jsdelivr.net/gh/TheAdroitDev/Chai-Tailwind/index.js</div>
+
+        <div class="video-wrapper">
+            <video id="hero-video" class="video-blur" autoplay muted loop playsinline preload="auto">
+                <source src="chai-forge-demo.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <div id="features">
+        <div class="section-wrap">
+            <div class="section-label reveal"> features</div>
+            <h2 class="section-title reveal">Everything you need. <span class="hi">Nothing you don't.</span></h2>
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <span class="feature-icon">⚡</span>
+                    <h3>Zero Build Step</h3>
+                    <p>No PostCSS. No Webpack. No config files. Drop one script tag and ChaiTailwind initializes itself
+                        on load.
+                    </p>
+                </div>
+                <div class="feature-card reveal">
+                    <span class="feature-icon">🔭</span>
+                    <h3>MutationObserver</h3>
+                    <p>Dynamically added nodes are styled automatically. Works with SPAs, frameworks, and lazy-loaded
+                        content.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <span class="feature-icon">🎨</span>
+                    <h3>Built-in Color System</h3>
+                    <p>An opinionated palette with <code
+                            style="font-family:var(--font-mono);font-size:0.8em;color:var(--primary-dark)">chai-bg-*</code>
+                        and <code
+                            style="font-family:var(--font-mono);font-size:0.8em;color:var(--primary-dark)">chai-text-*</code>
+                        utilities ready out of the box.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <span class="feature-icon">📦</span>
+                    <h3>Featherlight</h3>
+                    <p>Pure JavaScript, zero dependencies. Optimized DOM selectors so it never scans the entire page.
+                    </p>
+                </div>
+                <div class="feature-card reveal">
+                    <span class="feature-icon">🏗️</span>
+                    <h3>Layout Utilities</h3>
+                    <p>Flex, justify-content, align-items — the layout primitives you reach for every day, now as class
+                        names.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <span class="feature-icon">🔄</span>
+                    <h3>Auto-initializes</h3>
+                    <p>No function calls needed. ChaiTailwind listens for <code
+                            style="font-family:var(--font-mono);font-size:0.8em;color:var(--primary-dark)">DOMContentLoaded</code>
+                        and
+                        runs on its own.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="section-wrap">
+        <div class="section-label">install</div>
+        <h2 class="section-title">Get Started</h2>
+
+        <div class="install">
+            &lt;script src="https://cdn.jsdelivr.net/gh/YOUR_USERNAME/chai-tailwind/index.js"&gt;&lt;/script&gt;
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <div class="how-bg" id="how">
+        <div class="section-wrap">
+            <div class="section-label reveal">how it works</div>
+            <h2 class="section-title reveal">Three sips to <span class="hi">production.</span></h2>
+            <div class="steps">
+                <div class="step reveal">
+                    <div class="step-num">1</div>
+                    <h3>Add the Script</h3>
+                    <p>Drop the CDN script at the bottom of your HTML. That's your entire setup.</p>
+                </div>
+                <div class="step reveal">
+                    <div class="step-num">2</div>
+                    <h3>Write Utility Classes</h3>
+                    <p>Add <code>chai-*</code> classes to any element. Spacing, colors, typography, flex, borders — all
+                        included.</p>
+                </div>
+                <div class="step reveal">
+                    <div class="step-num">3</div>
+                    <h3>Styles Applied</h3>
+                    <p>The engine scans, parses, converts to inline styles, and cleans up the class names. Fully
+                        automatic.</p>
+                </div>
+            </div>
+            <div class="install-block reveal" id="install">
+                <code>&lt;script src="https://cdn.jsdelivr.net/gh/YOUR_USERNAME/chai-tailwind/index.js"&gt;&lt;/script&gt;</code>
+                <button class="copy-btn" onclick="copyScript(this)">COPY</button>
+            </div>
+        </div>
+    </div>
+    <!-- CLASSES -->
+    <div id="classes">
+        <div class="section-wrap">
+            <div class="section-label reveal">utility classes</div>
+            <h2 class="section-title reveal">Every class, <span class="hi">at a glance.</span></h2>
+            <div class="classes-layout">
+                <table class="class-table reveal">
+                    <thead>
+                        <tr>
+                            <th>Class</th>
+                            <th>CSS Output</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>chai-p-{n}</td>
+                            <td>padding: {n}px</td>
+                        </tr>
+                        <tr>
+                            <td>chai-m-{n}</td>
+                            <td>margin: {n}px</td>
+                        </tr>
+                        <tr>
+                            <td>chai-bg-red</td>
+                            <td>background-color: #ef4444</td>
+                        </tr>
+                        <tr>
+                            <td>chai-bg-blue</td>
+                            <td>background-color: #3b82f6</td>
+                        </tr>
+                        <tr>
+                            <td>chai-bg-green</td>
+                            <td>background-color: #22c55e</td>
+                        </tr>
+                        <tr>
+                            <td>chai-bg-black</td>
+                            <td>background-color: #0f172a</td>
+                        </tr>
+                        <tr>
+                            <td>chai-bg-white</td>
+                            <td>background-color: #f8fafc</td>
+                        </tr>
+                        <tr>
+                            <td>chai-text-center</td>
+                            <td>text-align: center</td>
+                        </tr>
+                        <tr>
+                            <td>chai-text-left</td>
+                            <td>text-align: left</td>
+                        </tr>
+                        <tr>
+                            <td>chai-text-right</td>
+                            <td>text-align: right</td>
+                        </tr>
+                        <tr>
+                            <td>chai-text-{n}</td>
+                            <td>font-size: {n}px</td>
+                        </tr>
+                        <tr>
+                            <td>chai-text-white</td>
+                            <td>color: #f8fafc</td>
+                        </tr>
+                        <tr>
+                            <td>chai-text-red</td>
+                            <td>color: #ef4444</td>
+                        </tr>
+                        <tr>
+                            <td>chai-rounded-{n}</td>
+                            <td>border-radius: {n}px</td>
+                        </tr>
+                        <tr>
+                            <td>chai-border-{n}</td>
+                            <td>border: {n}px solid …</td>
+                        </tr>
+                        <tr>
+                            <td>chai-flex</td>
+                            <td>display: flex</td>
+                        </tr>
+                        <tr>
+                            <td>chai-justify-{v}</td>
+                            <td>justify-content: {v}</td>
+                        </tr>
+                        <tr>
+                            <td>chai-items-{v}</td>
+                            <td>align-items: {v}</td>
+                        </tr>
+                        <tr>
+                            <td>chai-w-{n}</td>
+                            <td>width: {n}px</td>
+                        </tr>
+                        <tr>
+                            <td>chai-h-{n}</td>
+                            <td>height: {n}px</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="class-sidebar">
+                    <div class="sidebar-card reveal">
+                        <div class="sidebar-card-head">Color Palette</div>
+                        <div class="sidebar-card-body">
+                            <div class="color-swatches">
+                                <div class="swatch" style="background:#ef4444"><span>red</span></div>
+                                <div class="swatch" style="background:#3b82f6"><span>blue</span></div>
+                                <div class="swatch" style="background:#22c55e"><span>green</span></div>
+                                <div class="swatch" style="background:#0f172a"><span>black</span></div>
+                                <div class="swatch" style="background:#c8d4ca"><span
+                                        style="color:rgba(0,0,0,0.35)">white</span></div>
+                            </div>
+                            <p style="font-size:0.78rem;color:var(--muted)">Use any name as a value for <code
+                                    style="font-family:var(--font-mono);font-size:0.85em;color:var(--primary-dark)">chai-bg-*</code>
+                                and <code
+                                    style="font-family:var(--font-mono);font-size:0.85em;color:var(--primary-dark)">chai-text-*</code>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card reveal">
+                        <div class="sidebar-card-head">Spacing Scale</div>
+                        <div class="sidebar-card-body">
+                            <div class="spacing-demo">
+                                <div class="spacing-box" style="width:20px;height:20px;font-size:0.55rem">4</div>
+                                <div class="spacing-box" style="width:28px;height:28px;font-size:0.58rem">8</div>
+                                <div class="spacing-box" style="width:36px;height:36px;font-size:0.6rem">12</div>
+                                <div class="spacing-box" style="width:46px;height:46px;font-size:0.62rem">16</div>
+                                <div class="spacing-box" style="width:58px;height:58px;font-size:0.64rem">20</div>
+                                <div class="spacing-box" style="width:72px;height:72px;font-size:0.66rem">24</div>
+                            </div>
+                            <p style="font-size:0.78rem;color:var(--muted)">Any integer works — <code
+                                    style="font-family:var(--font-mono);font-size:0.85em;color:var(--primary-dark)">chai-p-32</code>,
+                                <code
+                                    style="font-family:var(--font-mono);font-size:0.85em;color:var(--primary-dark)">chai-m-8</code>,
+                                etc.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card reveal">
+                        <div class="sidebar-card-head">Quick Example</div>
+                        <div class="sidebar-card-body">
+                            <div
+                                style="background:#1e2a22;color:#d4e8d8;border-radius:10px;padding:14px 18px;font-family:var(--font-mono);font-size:0.72rem;line-height:1.9">
+                                <span style="color:#86efac">&lt;div</span>
+                                <span style="color:#fde68a"> class</span>=<span
+                                    style="color:#a8c5af">"chai-p-20<br>&nbsp;&nbsp;&nbsp;chai-bg-black<br>&nbsp;&nbsp;&nbsp;chai-rounded-12<br>&nbsp;&nbsp;&nbsp;chai-text-white"</span>
+                                <span style="color:#86efac">&gt;</span><br>
+                                &nbsp;&nbsp;Hello, ChaiTailwind<br>
+                                <span style="color:#86efac">&lt;/div&gt;</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        ☕ Chai Forge · Built with simplicity
+    </footer>
+
+    <script>
+        const reveals = document.querySelectorAll('.reveal');
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 70);
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach(el => io.observe(el));
+
+        function copyScript(btn) {
+            const code = btn.previousElementSibling.textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                btn.textContent = 'COPIED ✓';
+                btn.style.color = '#22c55e';
+                btn.style.borderColor = '#22c55e';
+                setTimeout(() => {
+                    btn.textContent = 'COPY';
+                    btn.style.color = '';
+                    btn.style.borderColor = '';
+                }, 2000);
+            });
+        }
+        const video = document.getElementById("hero-video");
+
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      video.play(); // start video
+      video.classList.add("playing"); // remove blur
+    }, 760); // 1 second delay
+  });
+    </script>
+</body>
+
+</html>
