@@ -39,7 +39,7 @@ It’s intentionally simple — no config, no build step, just direct control.
 ### CDN
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@theadroitdev/chai-forge/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chai-forge/src/index.js"></script>
 ```
 
 ---
@@ -47,7 +47,7 @@ It’s intentionally simple — no config, no build step, just direct control.
 ### npm
 
 ```bash
-npm install @theadroitdev/chai-forge
+npm i chai-forge
 ```
 
 ---
