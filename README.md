@@ -1,5 +1,5 @@
 # Chai Forge
-
+![banner](/public/banner.png)
 > Utility-first styling. Forged at runtime.
 
 Chai Forge is a lightweight JavaScript engine that lets you write utility classes directly in HTML — without writing CSS or setting up build tools.
