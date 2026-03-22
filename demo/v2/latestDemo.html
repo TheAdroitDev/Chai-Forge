@@ -7,13 +7,9 @@
     <title>Chai Forge — Utility CSS, Brewed in JS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
-        href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Cabinet+Grotesk:wght@300;400;500;700&family=Fira+Code:wght@400;500&display=swap"
-        rel="stylesheet">
-    <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Syne:wght@700;800&family=Fira+Code:wght@400;500&display=swap"
         rel="stylesheet">
-
-   <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -24,20 +20,21 @@
         <ul class="nav-links">
             <li><a href="#features">Features</a></li>
             <li><a href="#how">How it works</a></li>
+            <li><a href="#playground">Playground</a></li>
             <li><a href="#classes">Classes</a></li>
         </ul>
-        <a href="#how" class="nav-cta">Get Started →</a>
+        <a href="https://github.com/TheAdroitDev/Chai-Forge" target="_blank" class="nav-cta">GitHub →</a>
     </nav>
 
     <!-- HERO -->
     <section class="hero">
         <div class="hero-badge">
             <span class="hero-badge-icon">☕</span>
-            v1.0 · Now on CDN
+            v1.0 · Now on CDN &amp; npm
         </div>
         <h1>
             <span class="word-strike">Write CSS.</span><br>
-            <span class="word-amber">Brew</span> your styles.
+            <span class="word-green">Brew</span> your styles.
         </h1>
         <p class="hero-sub">
             <strong>Chai Forge</strong> is a zero-config utility CSS engine that lives entirely in JavaScript.
@@ -46,9 +43,25 @@
         <div class="hero-actions">
             <a href="#how" class="btn-primary">
                 Start Brewing
-                <span class="arrow">→</span>
+                <!-- <span class="arrow">→</span> -->
             </a>
-            <a href="#classes" class="btn-outline">View Classes</a>
+            <a href="#playground" class="btn-outline">Try Playground</a>
+        </div>
+
+        <!-- Install pills -->
+        <div class="install-pills">
+            <div class="install-pill">
+                <span class="pill-label">npm</span>
+                <code>npm i chai-forge</code>
+                <button class="pill-copy" onclick="copyPill(this, 'npm i chai-forge')">Copy</button>
+            </div>
+            <div class="install-pill-divider">or</div>
+            <div class="install-pill">
+                <span class="pill-label">cdn</span>
+                <code>cdn.jsdelivr.net/gh/TheAdroitDev/Chai-Forge/index.js</code>
+                <button class="pill-copy"
+                    onclick="copyPill(this, 'https://cdn.jsdelivr.net/gh/TheAdroitDev/Chai-Forge/index.js')">Copy</button>
+            </div>
         </div>
     </section>
 
@@ -63,11 +76,10 @@
                     <div class="url-pill">theadroitdev.com/chaiforge — live demo</div>
                 </div>
             </div>
-
             <div class="video-body">
-
-
-         <video autoplay muted loop playsinline preload="auto" src="../chai-forge-demo.mp4"></video>
+                <video autoplay muted loop playsinline preload="auto">
+                    <source src="../chai-forge-demo.mp4" type="video/mp4">
+                </video>
             </div>
         </div>
     </section>
@@ -115,10 +127,8 @@
                 <div class="feat-card reveal">
                     <div class="feat-icon-wrap">🎨</div>
                     <h3>Built-in Colors</h3>
-                    <p>An opinionated palette with <code
-                            style="font-family:var(--f-mono);font-size:0.8em;color:var(--amber)">chai-bg-*</code> and
-                        <code style="font-family:var(--f-mono);font-size:0.8em;color:var(--amber)">chai-text-*</code>
-                        utilities ready out of the box.</p>
+                    <p>An opinionated palette with <code class="ic">chai-bg-*</code> and <code
+                            class="ic">chai-text-*</code> utilities ready out of the box.</p>
                 </div>
                 <div class="feat-card reveal">
                     <div class="feat-icon-wrap">📦</div>
@@ -135,9 +145,8 @@
                 <div class="feat-card reveal">
                     <div class="feat-icon-wrap">🔄</div>
                     <h3>Auto-Initializes</h3>
-                    <p>No function calls needed. Chai Forge listens for <code
-                            style="font-family:var(--f-mono);font-size:0.8em;color:var(--amber)">DOMContentLoaded</code>
-                        and runs entirely on its own.</p>
+                    <p>No function calls needed. Chai Forge listens for <code class="ic">DOMContentLoaded</code> and
+                        runs entirely on its own.</p>
                 </div>
             </div>
         </div>
@@ -154,14 +163,14 @@
                 <div class="step-card reveal">
                     <div class="step-num">1</div>
                     <h3>Add the Script</h3>
-                    <p>Drop the CDN script at the bottom of your HTML. That is your entire setup — no npm, no config.
+                    <p>Drop the CDN script or run <code class="ic">npm i chai-forge</code> — that is your entire setup.
                     </p>
                 </div>
                 <div class="step-card reveal">
                     <div class="step-num">2</div>
                     <h3>Write Utility Classes</h3>
-                    <p>Add <code style="font-family:var(--f-mono);font-size:0.85em;color:var(--amber)">chai-*</code>
-                        classes to any element. Spacing, colors, flex, borders — all included.</p>
+                    <p>Add <code class="ic">chai-*</code> classes to any element. Spacing, colors, flex, borders — all
+                        included.</p>
                 </div>
                 <div class="step-card reveal">
                     <div class="step-num">3</div>
@@ -171,9 +180,16 @@
             </div>
 
             <div class="install-area reveal" id="install">
-                <div class="install-label">CDN Install</div>
-                <div class="install-box">
-                    <code>&lt;script src="https://cdn.jsdelivr.net/gh/YOUR_USERNAME/chai-tailwind/index.js"&gt;&lt;/script&gt;</code>
+                <div class="install-tabs">
+                    <button class="itab active" onclick="switchTab(this, 'cdn')">CDN</button>
+                    <button class="itab" onclick="switchTab(this, 'npm')">npm</button>
+                </div>
+                <div class="install-box" id="tab-cdn">
+                    <code>&lt;script src="https://cdn.jsdelivr.net/gh/TheAdroitDev/Chai-Forge/index.js"&gt;&lt;/script&gt;</code>
+                    <button class="copy-btn" onclick="doCopy(this)">Copy</button>
+                </div>
+                <div class="install-box hidden" id="tab-npm">
+                    <code>npm i chai-forge</code>
                     <button class="copy-btn" onclick="doCopy(this)">Copy</button>
                 </div>
             </div>
@@ -182,7 +198,137 @@
 
     <div class="divider"></div>
 
-    <!-- CLASSES -->
+    <!-- PLAYGROUND -->
+    <section id="playground">
+        <div class="wrap">
+            <div class="section-eyebrow reveal">Playground</div>
+            <h2 class="section-title reveal">Click a class. <em>See it brew.</em></h2>
+            <p class="playground-sub reveal">Tap any class chip and watch it apply live to the preview element on the
+                right.</p>
+
+            <div class="playground-shell reveal">
+
+                <!-- LEFT: chip panel -->
+                <div class="pg-chips-panel">
+
+                    <div class="pg-group-label">Spacing</div>
+                    <div class="pg-chips">
+                        <button class="chip" data-style="padding:4px" data-desc="padding: 4px">chai-p-4</button>
+                        <button class="chip" data-style="padding:8px" data-desc="padding: 8px">chai-p-8</button>
+                        <button class="chip" data-style="padding:16px" data-desc="padding: 16px">chai-p-16</button>
+                        <button class="chip" data-style="padding:24px" data-desc="padding: 24px">chai-p-24</button>
+                        <button class="chip" data-style="margin:8px" data-desc="margin: 8px">chai-m-8</button>
+                        <button class="chip" data-style="margin:16px" data-desc="margin: 16px">chai-m-16</button>
+                    </div>
+
+                    <div class="pg-group-label">Background</div>
+                    <div class="pg-chips">
+                        <button class="chip" data-style="background-color:#ef4444" data-desc="background: #ef4444"
+                            data-group="bg">chai-bg-red</button>
+                        <button class="chip" data-style="background-color:#3b82f6" data-desc="background: #3b82f6"
+                            data-group="bg">chai-bg-blue</button>
+                        <button class="chip" data-style="background-color:#22c55e" data-desc="background: #22c55e"
+                            data-group="bg">chai-bg-green</button>
+                        <button class="chip" data-style="background-color:#708775" data-desc="background: #708775"
+                            data-group="bg">chai-bg-sage</button>
+                        <button class="chip" data-style="background-color:#0f172a" data-desc="background: #0f172a"
+                            data-group="bg">chai-bg-black</button>
+                        <button class="chip" data-style="background-color:#f8fafc" data-desc="background: #f8fafc"
+                            data-group="bg">chai-bg-white</button>
+                    </div>
+
+                    <div class="pg-group-label">Text Color</div>
+                    <div class="pg-chips">
+                        <button class="chip" data-style="color:#ef4444" data-desc="color: #ef4444"
+                            data-group="color">chai-text-red</button>
+                        <button class="chip" data-style="color:#3b82f6" data-desc="color: #3b82f6"
+                            data-group="color">chai-text-blue</button>
+                        <button class="chip" data-style="color:#ffffff" data-desc="color: #ffffff"
+                            data-group="color">chai-text-white</button>
+                        <button class="chip" data-style="color:#55655a" data-desc="color: #55655a"
+                            data-group="color">chai-text-sage</button>
+                    </div>
+
+                    <div class="pg-group-label">Font Size</div>
+                    <div class="pg-chips">
+                        <button class="chip" data-style="font-size:12px" data-desc="font-size: 12px"
+                            data-group="fs">chai-text-12</button>
+                        <button class="chip" data-style="font-size:16px" data-desc="font-size: 16px"
+                            data-group="fs">chai-text-16</button>
+                        <button class="chip" data-style="font-size:24px" data-desc="font-size: 24px"
+                            data-group="fs">chai-text-24</button>
+                        <button class="chip" data-style="font-size:32px" data-desc="font-size: 32px"
+                            data-group="fs">chai-text-32</button>
+                    </div>
+
+                    <div class="pg-group-label">Border Radius</div>
+                    <div class="pg-chips">
+                        <button class="chip" data-style="border-radius:4px" data-desc="border-radius: 4px"
+                            data-group="br">chai-rounded-4</button>
+                        <button class="chip" data-style="border-radius:12px" data-desc="border-radius: 12px"
+                            data-group="br">chai-rounded-12</button>
+                        <button class="chip" data-style="border-radius:9999px" data-desc="border-radius: 9999px"
+                            data-group="br">chai-rounded-full</button>
+                    </div>
+
+                    <div class="pg-group-label">Border</div>
+                    <div class="pg-chips">
+                        <button class="chip" data-style="border:2px solid #ef4444" data-desc="border: 2px solid red"
+                            data-group="border">chai-border-red</button>
+                        <button class="chip" data-style="border:2px solid #708775" data-desc="border: 2px solid sage"
+                            data-group="border">chai-border-sage</button>
+                        <button class="chip" data-style="border:2px solid #3b82f6" data-desc="border: 2px solid blue"
+                            data-group="border">chai-border-blue</button>
+                        <button class="chip" data-style="border:2px solid #0f172a" data-desc="border: 2px solid black"
+                            data-group="border">chai-border-black</button>
+                    </div>
+
+                    <div class="pg-group-label">Layout</div>
+                    <div class="pg-chips">
+                        <button class="chip" data-style="display:flex" data-desc="display: flex">chai-flex</button>
+                        <button class="chip" data-style="justify-content:center"
+                            data-desc="justify-content: center">chai-justify-center</button>
+                        <button class="chip" data-style="align-items:center"
+                            data-desc="align-items: center">chai-items-center</button>
+                        <button class="chip" data-style="width:200px" data-desc="width: 200px"
+                            data-group="w">chai-w-200</button>
+                        <button class="chip" data-style="width:300px" data-desc="width: 300px"
+                            data-group="w">chai-w-300</button>
+                        <button class="chip" data-style="height:60px" data-desc="height: 60px"
+                            data-group="h">chai-h-60</button>
+                        <button class="chip" data-style="height:100px" data-desc="height: 100px"
+                            data-group="h">chai-h-100</button>
+                    </div>
+
+                    <button class="pg-reset" onclick="resetPlayground()">↺ Reset all</button>
+                </div>
+
+                <!-- RIGHT: live preview -->
+                <div class="pg-preview-panel">
+                    <div class="pg-preview-header">
+                        <span class="pg-preview-label">Live Preview</span>
+                        <span class="pg-active-count" id="activeCount">0 classes active</span>
+                    </div>
+
+                    <div class="pg-canvas">
+                        <div class="pg-element" id="pgEl">
+                            Spy x Family ☕
+                        </div>
+                    </div>
+
+                    <div class="pg-log-header">Applied styles</div>
+                    <div class="pg-log" id="pgLog">
+                        <span class="pg-log-empty">No classes applied yet — click a chip!</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CLASSES TABLE -->
     <section id="classes">
         <div class="wrap">
             <div class="section-eyebrow reveal">Utility Classes</div>
@@ -293,10 +439,7 @@
                                 <div class="swatch light" style="background:#f1ede6;border:1px solid #ddd">white</div>
                             </div>
                             <p style="font-size:0.78rem;color:var(--ink-3);font-weight:300">Use any name with <code
-                                    style="font-family:var(--f-mono);color:var(--amber);font-size:0.85em">chai-bg-*</code>
-                                and <code
-                                    style="font-family:var(--f-mono);color:var(--amber);font-size:0.85em">chai-text-*</code>.
-                            </p>
+                                    class="ic">chai-bg-*</code> and <code class="ic">chai-text-*</code>.</p>
                         </div>
                     </div>
 
@@ -312,11 +455,7 @@
                                 <div class="sp-box" style="width:72px;height:72px;font-size:0.6rem">24</div>
                             </div>
                             <p style="font-size:0.78rem;color:var(--ink-3);margin-top:12px;font-weight:300">Any integer
-                                — <code
-                                    style="font-family:var(--f-mono);color:var(--amber);font-size:0.85em">chai-p-32</code>,
-                                <code
-                                    style="font-family:var(--f-mono);color:var(--amber);font-size:0.85em">chai-m-8</code>
-                            </p>
+                                — <code class="ic">chai-p-32</code>, <code class="ic">chai-m-8</code></p>
                         </div>
                     </div>
 
@@ -348,9 +487,9 @@
             <div class="footer-logo"><span class="dot"></span> Chai Forge</div>
             <p class="footer-copy">Utility CSS · Brewed in JS · MIT License</p>
             <ul class="footer-links">
-                <li><a href="#">GitHub</a></li>
-                <li><a href="#">Docs</a></li>
-                <li><a href="#">CDN</a></li>
+                <li><a href="https://github.com/TheAdroitDev/Chai-Forge" target="_blank">GitHub</a></li>
+                <li><a href="https://www.npmjs.com/package/chai-forge" target="_blank">npm</a></li>
+                <li><a href="#classes">Classes</a></li>
             </ul>
         </div>
     </footer>
@@ -368,19 +507,102 @@
         }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
         reveals.forEach(el => io.observe(el));
 
-        // Copy
+        // Copy helpers
         function doCopy(btn) {
             const code = btn.previousElementSibling.textContent;
             navigator.clipboard.writeText(code).then(() => {
                 btn.textContent = 'Copied ✓';
-                btn.style.color = '#4ade80';
-                btn.style.borderColor = 'rgba(74,222,128,0.3)';
-                setTimeout(() => {
-                    btn.textContent = 'Copy';
-                    btn.style.color = '';
-                    btn.style.borderColor = '';
-                }, 2200);
+                setTimeout(() => { btn.textContent = 'Copy'; }, 2200);
             });
+        }
+        function copyPill(btn, text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const orig = btn.textContent;
+                btn.textContent = '✓';
+                setTimeout(() => btn.textContent = orig, 2000);
+            });
+        }
+
+        // Install tabs
+        function switchTab(btn, id) {
+            document.querySelectorAll('.itab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('tab-cdn').classList.add('hidden');
+            document.getElementById('tab-npm').classList.add('hidden');
+            document.getElementById('tab-' + id).classList.remove('hidden');
+        }
+
+        // Playground
+        const pgEl = document.getElementById('pgEl');
+        const pgLog = document.getElementById('pgLog');
+        const countEl = document.getElementById('activeCount');
+
+        // Map: chipName -> { cssProp (camelCase), cssValue, desc, group }
+        const activeStyles = new Map();
+
+        function parseStyle(styleStr) {
+            const colonIdx = styleStr.indexOf(':');
+            const rawProp = styleStr.slice(0, colonIdx).trim();
+            const value = styleStr.slice(colonIdx + 1).trim();
+            const prop = rawProp.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+            return { prop, value };
+        }
+
+        // Props that should only allow one active chip at a time
+        const exclusiveGroups = ['bg', 'color', 'fs', 'br', 'border', 'w', 'h'];
+
+        document.querySelectorAll('.chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                const name = chip.textContent.trim();
+                const group = chip.dataset.group || null;
+                const { prop, value } = parseStyle(chip.dataset.style);
+                const desc = chip.dataset.desc;
+
+                if (chip.classList.contains('active')) {
+                    // Deactivate
+                    chip.classList.remove('active');
+                    pgEl.style[prop] = '';
+                    activeStyles.delete(name);
+                } else {
+                    // If this chip has a group, deactivate other chips in same group
+                    if (group && exclusiveGroups.includes(group)) {
+                        document.querySelectorAll(`.chip[data-group="${group}"].active`).forEach(other => {
+                            const { prop: op } = parseStyle(other.dataset.style);
+                            other.classList.remove('active');
+                            pgEl.style[op] = '';
+                            activeStyles.delete(other.textContent.trim());
+                        });
+                    }
+                    chip.classList.add('active');
+                    pgEl.style[prop] = value;
+                    activeStyles.set(name, { prop, value, desc });
+                }
+
+                renderLog();
+            });
+        });
+
+        function renderLog() {
+            const count = activeStyles.size;
+            countEl.textContent = count + ' class' + (count !== 1 ? 'es' : '') + ' active';
+            if (count === 0) {
+                pgLog.innerHTML = '<span class="pg-log-empty">No classes applied yet — click a chip!</span>';
+                return;
+            }
+            pgLog.innerHTML = Array.from(activeStyles.entries()).map(([name, { desc }]) =>
+                `<div class="pg-log-row">
+                    <span class="pg-log-chip">${name}</span>
+                    <span class="pg-log-arrow">→</span>
+                    <span class="pg-log-val">${desc}</span>
+                </div>`
+            ).join('');
+        }
+
+        function resetPlayground() {
+            document.querySelectorAll('.chip.active').forEach(c => c.classList.remove('active'));
+            activeStyles.clear();
+            pgEl.removeAttribute('style');
+            renderLog();
         }
     </script>
 </body>
