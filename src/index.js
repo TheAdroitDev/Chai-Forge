@@ -86,7 +86,7 @@ const specials = {
     el.style.letterSpacing = "0.4px";
   }
 };
-
+  // pattern: chai-{type}-{value}
 function processChai() {
   const elements = document.querySelectorAll('[class*="chai-"]');
   elements.forEach(processElement);
@@ -209,6 +209,8 @@ function initObserver() {
     });
   });
 
+
+  // manager ji
   observer.observe(document.body, {
     childList: true,
     subtree: true,

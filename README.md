@@ -11,7 +11,7 @@ It scans the DOM, parses `chai-*` class names, and applies inline styles dynamic
 ## Why Chai Forge?
 
 Writing CSS for small UI tweaks can slow things down.
-
+## Explanation Video - https://www.youtube.com/watch?v=ZzMZujNt9a0
 Chai Forge is built for:
 
 - Rapid prototyping
