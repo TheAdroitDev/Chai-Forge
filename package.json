@@ -1,6 +1,6 @@
 {
   "name": "chai-forge",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A lightweight utility-first CSS engine using JavaScript",
   "keywords": [
     "chai",
@@ -24,13 +24,12 @@
     "type": "git",
     "url": "git+https://github.com/TheAdroitDev/Chai-Tailwind.git"
   },
-
   "type": "module",
   "main": "src/index.js",
-
   "exports": {
     ".": "./src/index.js"
   },
-
-  "files": ["src"]
+  "files": [
+    "src"
+  ]
 }
